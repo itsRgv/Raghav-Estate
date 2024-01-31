@@ -24,6 +24,7 @@ export default function SignUp() {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
+      console.log(data);
       if (data.success === false) {
         setError(data.message);
         setLoading(false);
@@ -36,8 +37,6 @@ export default function SignUp() {
       setLoading(false);
       setError(error.message);
     }
-
-    console.log(data);
   };
   return (
     <div className="p-3 max-w-lg mx-auto">
