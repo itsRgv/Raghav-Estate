@@ -13,7 +13,7 @@ export default function SignIn() {
   const [formData, setFormData] = useState({});
   // const [error, setError] = useState(null);
   // const [loading, setLoading] = useState(false);
-  const { loading, error } = useSelector((state) => state.userReducer);
+  const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleInput = (e) => {
