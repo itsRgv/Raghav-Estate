@@ -19,7 +19,8 @@ const userSchema = new mongoose.Schema(
     },
     avatar: {
       type: String,
-      default: "https://www.gravatar.com/avatar/",
+      default:
+        "https://lh3.googleusercontent.com/a/ACg8ocLdegUYuqO0GkUS7OPPuAlObfa4JgryHK9GYQfqL89VeA=s96-c",
     },
   },
   { timestamps: true }
