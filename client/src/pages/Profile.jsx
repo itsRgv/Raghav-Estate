@@ -8,6 +8,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { app } from "../firebase";
+import { set } from "mongoose";
 
 export default function Profile() {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -46,11 +47,24 @@ export default function Profile() {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log("File available at", downloadURL);
           setFormData({ ...formData, avatar: downloadURL });
-          currentUser.avatar = downloadURL;
-          console.log(currentUser);
         });
       }
     );
+  };
+
+  const handleUserUpdate = () => {
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    if (username) {
+      setFormData({ ...formData, username });
+    }
+    if (email) {
+      setFormData({ ...formData, email });
+    }
+    if (password) {
+      setFormData({ ...formData, password });
+    }
   };
 
   return (
@@ -102,7 +116,10 @@ export default function Profile() {
           placeholder="password"
           className="border p-3 rounded-lg"
         ></input>
-        <button className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80">
+        <button
+          onClick={handleUserUpdate}
+          className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
+        >
           update
         </button>
       </form>
