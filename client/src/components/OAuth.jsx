@@ -21,9 +21,9 @@ export default function OAuth() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: result?.user?.email,
-          name: result?.user?.displayName,
-          photo: result?.user?.photoURL,
+          email: result.user.email,
+          name: result.user.displayName,
+          photo: result.user.photoURL,
         }),
       });
       const data = await response.json();
