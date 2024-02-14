@@ -38,6 +38,15 @@ export const signin = async (req, res, next) => {
   }
 };
 
+export const signout = async (req, res, next) => {
+  try {
+    res.clearCookie("access_token");
+    res.status(200).json("User has benn logged out...");
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const google = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
