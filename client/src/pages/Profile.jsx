@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useRef } from "react";
 import {
@@ -38,6 +39,7 @@ export default function Profile() {
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setUserListings] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (file) {
@@ -311,7 +313,11 @@ export default function Profile() {
                 >
                   Delete
                 </button>
-                <button type="button" className="text-green-700 uppercase">
+                <button
+                  onClick={() => navigate(`/edit-listing/${listing._id}`)}
+                  type="button"
+                  className="text-green-700 uppercase"
+                >
                   Edit
                 </button>
               </div>
