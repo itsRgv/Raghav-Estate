@@ -300,7 +300,7 @@ export default function Profile() {
                 ></img>
               </Link>
               <Link
-                to={`/listings/${listing._id}`}
+                to={`/listing/${listing._id}`}
                 className="flex-1 text-slate-700 font-semibold hover:underline truncate"
               >
                 <p>{listing.name}</p>
