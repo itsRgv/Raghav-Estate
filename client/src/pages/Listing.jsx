@@ -13,27 +13,31 @@ export default function Listing() {
   SwiperCore.use([Navigation]);
 
   useEffect(() => {
-    const fetchListing = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(`/api/listing/get/${params.listingId}`);
-        const data = await res.json();
-        if (data.success === false) {
-          setError(true);
-          setLoading(false);
-          //   console.log(data.message);
-          return;
-        }
-        setListingData(data);
-        setLoading(false);
-        setError(false);
-      } catch (error) {
-        setError(true);
-        setLoading(false);
-      }
-    };
     fetchListing();
   }, [params.listingId]);
+  const fetchListing = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch(`/api/listing/get/${params.listingId}`);
+      const data = await res.json();
+      console.log(data);
+      if (data.success === false) {
+        setError(true);
+        setLoading(false);
+        return;
+      }
+      setListingData(data);
+      setLoading(false);
+      setError(false);
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+    }
+  };
+
+  //   useEffect(() => {
+  //     console.log("listingData", listingData);
+  //   }, [listingData]);
   return (
     <main>
       {loading && <p className="text-center my-7 text-2xl">Loading...</p>}
@@ -42,9 +46,9 @@ export default function Listing() {
       )}
 
       {listingData && !loading && !error && (
-        <>
+        <div>
           <Swiper navigation>
-            {listingData.imageUrls.map((url) => {
+            {listingData.imageUrls.map((url) => (
               <SwiperSlide key={url}>
                 <div
                   className="h-[550px]"
@@ -53,10 +57,10 @@ export default function Listing() {
                     backgroundSize: "cover",
                   }}
                 ></div>
-              </SwiperSlide>;
-            })}
+              </SwiperSlide>
+            ))}
           </Swiper>
-        </>
+        </div>
       )}
     </main>
   );
