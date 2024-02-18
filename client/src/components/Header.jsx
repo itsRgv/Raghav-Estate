@@ -8,7 +8,7 @@ export default function Header() {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  console.log(currentUser);
+  // console.log(currentUser);
 
   const handleSubmit = (e) => {
     e.preventDefault();
