@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
     avatar: {
       type: String,
       default:
-        "https://lh3.googleusercontent.com/a/ACg8ocLdegUYuqO0GkUS7OPPuAlObfa4JgryHK9GYQfqL89VeA=s96-c",
+        "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?cs=srgb&dl=pexels-mohamed-abdelghaffar-771742.jpg&fm=jpg",
     },
   },
   { timestamps: true }
